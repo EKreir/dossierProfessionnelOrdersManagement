@@ -16,6 +16,14 @@ class ProductModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Récupérer un produit par son ID
+    public function getProductById($id) {
+        $query = "SELECT * FROM products WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     // Ajouter un produit à la base de données
     public function createProduct($name, $price) {
         $query = "INSERT INTO products (name, price) VALUES (?, ?)";

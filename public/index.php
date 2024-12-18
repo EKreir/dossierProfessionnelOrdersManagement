@@ -20,6 +20,9 @@ $router->addRoute('/orders', 'OrderController', 'index');             // Affiche
 $router->addRoute('/order/create', 'OrderController', 'create');      // Formulaire pour créer une commande
 $router->addRoute('/order/store', 'OrderController', 'store');        // Enregistrer une commande
 $router->addRoute('/order/view/{id}', 'OrderController', 'view');     // Détails d'une commande spécifique
+// Route pour la confirmation de la commande
+$router->addRoute('/order/confirmation', 'OrderController', 'confirmation');  // Page de confirmation après la commande
+
 
 // Gérer la requête
 $router->handleRequest();

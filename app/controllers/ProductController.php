@@ -19,10 +19,9 @@ class ProductController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
             $price = $_POST['price'];
-            $description = $_POST['description'];
 
             $productModel = new ProductModel();
-            $productModel->createProduct($name, $price, $description);
+            $productModel->createProduct($name, $price);
 
             header('Location: /products'); // Rediriger vers la liste des produits
         }

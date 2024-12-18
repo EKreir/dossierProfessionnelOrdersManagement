@@ -23,10 +23,10 @@ class OrderController {
     $products = $productModel->getAllProducts();
         require_once __DIR__ . '/../views/order_form.php';
     }
-
+    
     public function store() {
-        // Enregistrer une nouvelle commande dans la base de données
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Enregistrer une nouvelle commande dans la base de données
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $customerName = $_POST['customer_name'];
         $customerEmail = $_POST['customer_email'];
         $productId = $_POST['product_id'];
@@ -34,7 +34,7 @@ class OrderController {
 
         // Calculer le total de la commande
         $productModel = new ProductModel();
-        $product = $productModel->getProductById($productId);
+        $product = $productModel->getProductById($productId);  // Appel de la méthode qui pose problème
         $total = $product['price'] * $quantity;
 
         // Enregistrer la commande
@@ -47,5 +47,12 @@ class OrderController {
 
         header('Location: /order/confirmation'); // Rediriger vers une page de confirmation
     }
-    }
+}
+
+public function confirmation() {
+    // Afficher une page de confirmation après avoir créé une commande
+    require_once __DIR__ . '/../views/order_confirmation.php';
+}
+
+
 }
