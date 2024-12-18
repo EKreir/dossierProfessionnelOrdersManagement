@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../models/OrderModel.php';
 
 class OrderController {
 
@@ -12,11 +11,13 @@ class OrderController {
 
     public function create() {
         // Créer une commande (on va passer par un formulaire simple)
+        echo "Créer une commande";
         require_once __DIR__ . '/../views/order_form.php';
     }
 
     public function store() {
         // Enregistrer une nouvelle commande dans la base de données
+        echo "Enregistrer une nouvelle commande";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customerName = $_POST['customer_name'];
             $customerEmail = $_POST['customer_email'];
