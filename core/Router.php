@@ -1,5 +1,6 @@
 <?php
 class Router {
+
     private $routes = [];
 
     // Ajouter une route
@@ -9,29 +10,40 @@ class Router {
 
     // Gérer la requête
     public function handleRequest() {
-        // Récupérer l'URL demandée et enlever les slashes à la fin
+        // Récupérer l'URL demandée
         $url = rtrim($_SERVER['REQUEST_URI'], '/');
-
+        
         // Vérifier si la route existe
-        if (isset($this->routes[$url])) {
-            $route = $this->routes[$url];
-            $controllerName = $route['controller'];
-            $action = $route['action'];
+        foreach ($this->routes as $route => $controllerAction) {
+            // Remplacer le paramètre dynamique {id} dans l'URL par un regex
+            $routePattern = preg_replace('/\{[a-zA-Z0-9_]+\}/', '([a-zA-Z0-9_]+)', $route);
+            
+            // Si l'URL correspond au modèle
+            if (preg_match('#^' . $routePattern . '$#', $url, $matches)) {
+                // Extrait le contrôleur et l'action
+                $controllerName = $controllerAction['controller'];
+                $action = $controllerAction['action'];
 
-            // Vérifier si le contrôleur existe
-            if (class_exists($controllerName)) {
-                $controller = new $controllerName();
-                // Vérifier si l'action existe dans le contrôleur
-                if (method_exists($controller, $action)) {
-                    $controller->$action(); // Appeler l'action du contrôleur
+                // Récupérer les paramètres dynamiques (par exemple {id})
+                $params = array_slice($matches, 1);
+
+                // Vérifier si le contrôleur existe
+                if (class_exists($controllerName)) {
+                    $controller = new $controllerName();
+                    // Vérifier si l'action existe dans le contrôleur
+                    if (method_exists($controller, $action)) {
+                        // Appeler l'action avec les paramètres
+                        call_user_func_array([$controller, $action], $params);
+                    } else {
+                        echo "L'action '$action' n'existe pas.";
+                    }
                 } else {
-                    echo "L'action '$action' n'existe pas.";
+                    echo "Le contrôleur '$controllerName' n'existe pas.";
                 }
-            } else {
-                echo "Le contrôleur '$controllerName' n'existe pas.";
+                return;
             }
-        } else {
-            echo "La route n'existe pas.";
         }
+
+        echo "La route n'existe pas.";
     }
 }

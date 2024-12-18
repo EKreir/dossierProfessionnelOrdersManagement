@@ -8,4 +8,23 @@ class ProductController {
         $products = $productModel->getAllProducts();
         require_once __DIR__ . '/../views/products.php';
     }
+
+    // Afficher le formulaire de création de produit
+    public function create() {
+        require_once __DIR__ . '/../views/product_form.php';
+    }
+
+    // Enregistrer un nouveau produit
+    public function store() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $description = $_POST['description'];
+
+            $productModel = new ProductModel();
+            $productModel->createProduct($name, $price, $description);
+
+            header('Location: /products'); // Rediriger vers la liste des produits
+        }
+    }
 }

@@ -15,4 +15,11 @@ class ProductModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Ajouter un produit à la base de données
+    public function createProduct($name, $price) {
+        $query = "INSERT INTO products (name, price) VALUES (?, ?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$name, $price]);
+    }
 }

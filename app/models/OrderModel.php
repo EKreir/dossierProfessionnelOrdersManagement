@@ -21,4 +21,17 @@ class OrderModel {
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$customerName, $customerEmail, $total]);
     }
+
+    public function addOrderItem($orderId, $productId, $quantity) {
+    $query = "INSERT INTO order_items (order_id, product_id, quantity) VALUES (?, ?, ?)";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$orderId, $productId, $quantity]);
+}
+
+public function getLastOrderId() {
+    $query = "SELECT LAST_INSERT_ID() AS id";
+    $stmt = $this->conn->query($query);
+    return $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+}
+
 }
