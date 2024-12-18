@@ -1,3 +1,5 @@
+<?php include 'partials/header.php'; ?>
+
 <h1>Ajouter un nouveau produit</h1>
 <form method="POST" action="/product/store">
     <label for="name">Nom du produit:</label>
@@ -8,3 +10,5 @@
     
     <button type="submit">Ajouter le produit</button>
 </form>
+
+<?php include 'partials/footer.php'; ?>

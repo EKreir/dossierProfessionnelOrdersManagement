@@ -1,3 +1,5 @@
+<?php include 'partials/header.php'; ?>
+
 <h1>Liste des produits</h1>
 <a href="/product/create">Ajouter un produit</a>
 <ul>
@@ -8,3 +10,5 @@
         </li>
     <?php endforeach; ?>
 </ul>
+
+<?php include 'partials/footer.php'; ?>

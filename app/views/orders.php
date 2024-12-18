@@ -1,3 +1,5 @@
+<?php include 'partials/header.php'; ?>
+
 <h1>Liste des commandes</h1>
 <ul>
     <?php foreach ($orders as $order): ?>
@@ -8,3 +10,5 @@
         </li>
     <?php endforeach; ?>
 </ul>
+
+<?php include 'partials/footer.php'; ?>
