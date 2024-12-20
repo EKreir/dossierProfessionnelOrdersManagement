@@ -1,5 +1,7 @@
 <?php include 'partials/header.php'; ?>
 
+<?php include 'partials/navbar.php'; ?>
+
 <h1>Ajouter un nouveau produit</h1>
 <form method="POST" action="/product/store">
     <label for="name">Nom du produit:</label>

@@ -1,5 +1,7 @@
 <?php include 'partials/header.php'; ?>
 
+<?php include'partials/navbar.php'; ?>
+
 <h1>Détails de la commande</h1>
 
 <p><strong>Nom du client :</strong> <?= $order['customer_name']; ?></p>

@@ -1,5 +1,7 @@
 <?php include 'partials/header.php'; ?>
 
+<?php include 'partials/navbar.php'; ?>
+
 <h1>Liste des produits</h1>
 <a href="/product/create">Ajouter un produit</a>
 <ul>
