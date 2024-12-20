@@ -23,6 +23,11 @@
             <button type="submit" class="btn btn-primary">Se connecter</button>
         </div>
     </form>
+
+    <div class="d-flex justify-content-center mt-3">
+        <a href="/register" class="btn btn-secondary">S'inscrire</a>
+    </div>
+
 </div>
 
 <?php include __DIR__ . '/../partials/footer.php'; ?>

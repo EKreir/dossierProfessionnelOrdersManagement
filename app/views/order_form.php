@@ -2,6 +2,13 @@
 
 <div class="container mt-5">
     <h1 class="text-center">Passer une commande</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <form action="/logout" method="POST">
+            <button type="submit" class="btn btn-danger">Déconnexion</button>
+        </form>
+    </div>
+
     <form method="POST" action="/order/store" class="col-md-8 mx-auto">
         <div class="mb-3">
             <label for="customer_name" class="form-label">Nom :</label>
