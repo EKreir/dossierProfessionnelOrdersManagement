@@ -2,6 +2,12 @@
 
 session_start();
 
+// Redirection vers la page de login si l'utilisateur arrive sur la racine
+if ($_SERVER['REQUEST_URI'] === '/') {
+    header('Location: /login');
+    exit();
+}
+
 // Inclusion des fichiers nécessaires
 require_once '../core/Database.php';
 require_once '../core/Router.php';
