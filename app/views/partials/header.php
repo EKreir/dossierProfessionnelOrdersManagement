@@ -13,6 +13,5 @@
         <li><a href="/products">Produits</a></li>
         <li><a href="/product/create">Ajouter un produit</a></li>
         <li><a href="/orders">Commandes</a></li>
-        <li><a href="/order/create">Créer une commande</a></li>
     </ul>
 </nav>

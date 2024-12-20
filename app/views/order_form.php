@@ -1,5 +1,3 @@
-<?php include 'partials/header.php'; ?>
-
 <h1>Passer une commande</h1>
 <form method="POST" action="/order/store">
     <label for="customer_name">Nom :</label>
@@ -22,5 +20,3 @@
     
     <button type="submit">Commander</button>
 </form>
-
-<?php include 'partials/footer.php'; ?>

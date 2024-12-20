@@ -10,6 +10,11 @@ class Router {
 
     // Gérer la requête
     public function handleRequest() {
+
+       /* if (!isset($_SESSION['user_id'])) {
+    header('Location: /login');
+    exit;
+}*/
         // Récupérer l'URL demandée
         $url = rtrim($_SERVER['REQUEST_URI'], '/');
         
