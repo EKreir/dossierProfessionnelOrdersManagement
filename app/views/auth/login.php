@@ -1,13 +1,28 @@
 <?php include __DIR__ . '/../partials/header.php'; ?>
 
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
-    <input type="password" name="password" placeholder="Mot de passe" required>
-    <button type="submit">Se connecter</button>
-    
-    <?php if (isset($error) && !empty($error)): ?>
-        <p style="color: red;"><?php echo $error; ?></p>
-    <?php endif; ?>
-</form>
+<div class="container mt-5">
+    <h2 class="text-center">Se connecter</h2>
+    <form action="/login" method="POST" class="col-md-6 mx-auto">
+        <div class="mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Nom d'utilisateur" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
+        </div>
+
+        <?php if (isset($error) && !empty($error)): ?>
+            <div class="alert alert-danger">
+                <?php echo $error; ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </div>
+    </form>
+</div>
 
 <?php include __DIR__ . '/../partials/footer.php'; ?>
