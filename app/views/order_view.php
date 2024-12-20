@@ -1,31 +1,37 @@
 <?php include 'partials/header.php'; ?>
 
-<?php include'partials/navbar.php'; ?>
+<?php include 'partials/navbar.php'; ?>
 
-<h1>Détails de la commande</h1>
+<div class="container mt-5">
+    <h1 class="display-4">Détails de la commande</h1>
 
-<p><strong>Nom du client :</strong> <?= $order['customer_name']; ?></p>
-<p><strong>Email du client :</strong> <?= $order['customer_email']; ?></p>
-<p><strong>Total de la commande :</strong> <?= $order['total']; ?> €</p>
+    <div class="mb-4">
+        <p><strong>Nom du client :</strong> <?= $order['customer_name']; ?></p>
+        <p><strong>Email du client :</strong> <?= $order['customer_email']; ?></p>
+        <p><strong>Total de la commande :</strong> <?= $order['total']; ?> €</p>
+    </div>
 
-<h2>Articles de la commande</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Produit</th>
-            <th>Quantité</th>
-            <th>Prix</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($orderItems as $item): ?>
+    <h2>Articles de la commande</h2>
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td><?= $item['name']; ?></td>
-                <td><?= $item['quantity']; ?></td>
-                <td><?= $item['price']; ?> €</td>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($orderItems as $item): ?>
+                <tr>
+                    <td><?= $item['name']; ?></td>
+                    <td><?= $item['quantity']; ?></td>
+                    <td><?= $item['price']; ?> €</td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <a href="/orders" class="btn btn-secondary mt-3">Retour à la liste des commandes</a>
+</div>
 
 <?php include 'partials/footer.php'; ?>
